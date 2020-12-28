@@ -25,10 +25,11 @@ screen.onkeypress(snake.move_right, "Right")
 
 # Play game ------------------------------------------------
 game_is_on = True
+game_speed = 0.1
 
 while game_is_on:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(game_speed)
     snake.move()
 
     # Detect collision with food
@@ -36,6 +37,8 @@ while game_is_on:
         food.refresh()
         snake.extend()
         scoreboard.increase_score()
+        game_speed -= 0.005
+        time.sleep(game_speed)
 
     # Detect collision with wall
 
